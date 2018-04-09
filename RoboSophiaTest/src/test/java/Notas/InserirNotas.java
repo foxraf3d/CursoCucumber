@@ -1,6 +1,5 @@
 package Notas;
 
-import BaseTest.BaseTest;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -23,8 +22,6 @@ public class InserirNotas extends BaseTest{
     public void FinalizaTest(){
         FecharNavegador();
     }
-
-    WebDriver driver;
 
     @Rule
     public TestName testName = new TestName();
