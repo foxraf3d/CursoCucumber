@@ -7,6 +7,10 @@ import org.junit.Test;
 import org.junit.rules.TestName;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -45,6 +49,18 @@ public class InserirNotas extends BaseTest{
         driver.findElement(By.id("ctl00_liNotas")).click();
 
         //Selecionar a combo Turmas id "ctl00_ContentPlaceHolder1_turmasDropDownList_primaDropDownList" e escolher a opção de turma
+        WebElement listaTurma  = driver.findElement(By.id("ctl00_ContentPlaceHolder1_turmasDropDownList_selectSpan"));
+        List<WebElement>opcoes = listaTurma.findElements(By.tagName("option"));
+        for (WebElement elemento:opcoes){
+            String textoTurma = elemento.getText();
+            if ("2º Médio A".equalsIgnoreCase(textoTurma)){
+                //new Select(elemento).selectByValue(textoTurma);
+                elemento.click();
+                break;
+            }
+        }
+
+
 
         //Selecionar a combo Etapas id "ctl00_ContentPlaceHolder1_etapasDropDownList_primaDropDownList" e escolher a opção de etapa
 
