@@ -17,7 +17,7 @@ public class BaseTest {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.manage().window().maximize();
-        driver.get("www.tobiasdeaguiar.com.br");
+        driver.get("http://srvcta.ddns.net/sg_web/acesso.aspx?escola=3147");
     }
 
     //Método para fechar o navegador
