@@ -6,6 +6,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestName;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -33,9 +34,6 @@ public class InserirNotas extends BaseTest{
     @Test
     public void inserirNotas(){
 
-        //Acessar a área restrita clicando no link com id "comp-je9zdg8tlink"
-        //driver.findElement(By.id("comp-je9zdg8tlink")).click();
-
         //Inserir usuário no campo de texto com id "txtCodigo" com o usuário "030"
         driver.findElement(By.id("txtCodigo")).sendKeys("030");
 
@@ -50,23 +48,39 @@ public class InserirNotas extends BaseTest{
 
         //Selecionar a combo Turmas id "ctl00_ContentPlaceHolder1_turmasDropDownList_primaDropDownList" e escolher a opção de turma
         WebElement listaTurma  = driver.findElement(By.id("ctl00_ContentPlaceHolder1_turmasDropDownList_selectSpan"));
-        List<WebElement>opcoes = listaTurma.findElements(By.tagName("option"));
-        for (WebElement elemento:opcoes){
+        List<WebElement>opcoesTurma = listaTurma.findElements(By.tagName("option"));
+        for (WebElement elemento:opcoesTurma){
             String textoTurma = elemento.getText();
             if ("2º Médio A".equalsIgnoreCase(textoTurma)){
-                //new Select(elemento).selectByValue(textoTurma);
                 elemento.click();
+                EsperaCarregar(1000);
                 break;
             }
         }
 
-
-
         //Selecionar a combo Etapas id "ctl00_ContentPlaceHolder1_etapasDropDownList_primaDropDownList" e escolher a opção de etapa
+        WebElement listaEtapas = driver.findElement(By.id("ctl00_ContentPlaceHolder1_etapasDropDownList_primaDropDownList"));
+        List<WebElement>opcoesEtapas = listaEtapas.findElements(By.tagName("option"));
+        for (WebElement elemento:opcoesEtapas) {
+            String textoEtapa = elemento.getText();
+            if ("4° bimestre".equalsIgnoreCase(textoEtapa)){
+                elemento.click();
+                EsperaCarregar(1000);
+                break;
+            }
+        }
 
         //Clicar no botão "Buscar" id "ctl00_ContentPlaceHolder1_listarButton"
+        driver.findElement(By.id("ctl00_ContentPlaceHolder1_listarButton")).click();
+        EsperaCarregar(12000);
+
+        //Rolar a tela para baixo
+        RolandoTelaScrollDown();
+
+        
 
         assertEquals("","");
     }
+
 
 }
