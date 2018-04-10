@@ -1,15 +1,13 @@
 package Notas;
 
+import com.google.common.collect.Table;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestName;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
@@ -75,9 +73,17 @@ public class InserirNotas extends BaseTest{
         EsperaCarregar(12000);
 
         //Rolar a tela para baixo
-        RolandoTelaScrollDown();
+        RolandoTelaScrollDown(1000);
 
-        
+        //Rolar a grid de notas id grid de notas = "ctl00_ContentPlaceHolder1_LancamentoTabContainer_NotasTabPanel_tbLancNotas"
+        //WebElement gridNotas = driver.findElement(By.id("ctl00_ContentPlaceHolder1_LancamentoTabContainer_NotasTabPanel"));
+        List<WebElement>tb_rows = driver.findElements(By.tagName("tr"));
+        for (WebElement elemento:tb_rows){
+            String ele = elemento.getTagName();
+        }
+
+
+
 
         assertEquals("","");
     }

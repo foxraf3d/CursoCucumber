@@ -42,8 +42,8 @@ public class BaseTest {
     }
 
     //Rolando a tela para Baixo
-    protected void RolandoTelaScrollDown(){
-        js.executeScript("window.scrollBy(0,1000)");
+    protected void RolandoTelaScrollDown(int parametro_Y){
+        js.executeScript("window.scrollBy(0,"+parametro_Y+")");
         //js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
     }
 
